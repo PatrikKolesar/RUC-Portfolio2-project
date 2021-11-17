@@ -20,7 +20,15 @@ namespace IMDB.Application.Services.v1.TitleService
 
         public async Task<ResponseMessage> Handle(CreateTitleCommand request, CancellationToken cancellationToken)
         {
-            return await _titlesRepository.GetTitleByTconst(request.Tconst);
+            
+            if (request.Tconst == null)
+            {
+                return await _titlesRepository.GetAllTitles();
+            }
+            else
+            {
+                return await _titlesRepository.GetTitleByTconst(request.Tconst);
+            }
         }
     }
 }

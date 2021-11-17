@@ -9,5 +9,6 @@ namespace IMDB.Application.Interfaces.v1.Repositories
     public interface ITitlesRepository
     {
         public Task<ResponseMessage> GetTitleByTconst(string tconst);
+        public Task<ResponseMessage> GetAllTitles();
     }
 }

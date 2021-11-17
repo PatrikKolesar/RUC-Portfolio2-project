@@ -18,7 +18,7 @@ namespace IMDB.WebAPI.Controllers.v1
 
         // GET api/<TitlesController/id>
         [HttpGet("{tconst}")]
-        public async Task<ActionResult<ResponseMessage>> GetTitle(string tconst)
+            public async Task<ActionResult<ResponseMessage>> GetTitleByTconst(string tconst)
             {
                 try
                 {
@@ -29,6 +29,21 @@ namespace IMDB.WebAPI.Controllers.v1
                     throw;
                 }
             }
+
+        [HttpGet]
+        public async Task<ActionResult<ResponseMessage>> GetAllTitles()
+        {
+            try
+            {
+                return await _mediator.Send(new CreateTitleCommand { });
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
+    }
+
+   
     
 }

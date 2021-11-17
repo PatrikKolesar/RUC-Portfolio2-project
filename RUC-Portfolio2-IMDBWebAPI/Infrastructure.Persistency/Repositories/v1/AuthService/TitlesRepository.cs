@@ -46,5 +46,29 @@ namespace IMDB.Infrastructure.Repositories.v1.AuthService
 
             return response;
         }
+
+        public async Task<ResponseMessage> GetAllTitles()
+        {
+            var response = new ResponseMessage();
+
+            try
+            {
+                List<object> mylist = new List<object>();
+                foreach (var line in _imdbContext.TitleBasics.Take(10))
+                {
+                    mylist.Add(line);
+                }
+                var jsonString = JsonConvert.SerializeObject(mylist, Formatting.Indented, new JsonConverter[] { new Newtonsoft.Json.Converters.StringEnumConverter() });
+
+                response.Status = "200";
+                response.Data = $"{jsonString}";
+            }
+            catch (Exception ex)
+            {
+                response.Status = ex.ToString();
+            }
+
+            return response;
+        }
     }
 }
