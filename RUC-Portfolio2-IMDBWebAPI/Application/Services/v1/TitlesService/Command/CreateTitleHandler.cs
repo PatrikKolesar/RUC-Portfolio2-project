@@ -15,6 +15,7 @@ namespace IMDB.Application.Services.v1.TitlesService.Command
     {
         private readonly ITitleRepository _titleRepo;
 
+
         public CreateTitleHandler(ITitleRepository titleRepository)
         {
             _titleRepo = titleRepository;
