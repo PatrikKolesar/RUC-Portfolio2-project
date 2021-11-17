@@ -4,6 +4,7 @@ using IMDB.Application.DTOs;
 using IMDB.Application.Interfaces.v1;
 using IMDB.Application.Interfaces.v1.Repositories;
 using IMDB.Application.Requests;
+using IMDB.Application.Services.v1.NameService;
 using IMDB.Application.Services.v1.TitleService;
 using IMDB.Application.Services.v1.UsersService;
 using IMDB.Application.Services.v1.UsersService.Command;
@@ -64,11 +65,13 @@ builder.Services.AddDbContext<imdbContext>(ctx => ctx.UseNpgsql(builder.Configur
 //REGISTER REPOSITORIES
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddScoped<IUsersRepository, UsersRepository>();
+builder.Services.AddScoped<INamesRepository, NamesRepository>();
 builder.Services.AddScoped<ITitlesRepository, TitlesRepository>();
 
 //REGISTER HANDLERS
 builder.Services.AddScoped<IRequestHandler<AuthenticateCommand, ResponseMessage>, AuthenticateCommandHandler>();
 builder.Services.AddScoped<IRequestHandler<CreateUserCommand, ResponseMessage>, CreateUserCommandHandler>();
+builder.Services.AddScoped<IRequestHandler<CreateNameCommand, ResponseMessage>, CreateNameCommandHandler>();
 builder.Services.AddScoped<IRequestHandler<CreateTitleCommand, ResponseMessage>, CreateTitleCommandHandler>();
 
 //JWT
