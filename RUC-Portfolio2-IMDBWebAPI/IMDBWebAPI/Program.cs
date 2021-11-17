@@ -4,6 +4,7 @@ using IMDB.Application.DTOs;
 using IMDB.Application.Interfaces.v1;
 using IMDB.Application.Interfaces.v1.Repositories;
 using IMDB.Application.Requests;
+using IMDB.Application.Services.v1.TitlesService.Command;
 using IMDB.Application.Services.v1.UsersService;
 using IMDB.Application.Services.v1.UsersService.Command;
 using IMDB.Infrastructure.Repositories.v1.AuthService;

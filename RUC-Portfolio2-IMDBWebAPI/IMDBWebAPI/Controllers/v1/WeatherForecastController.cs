@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace IMDBWebAPI.Controllers
 {
-    [Authorize]
+//[Authorize]
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
@@ -20,7 +20,7 @@ namespace IMDBWebAPI.Controllers
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
+        /*[HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
@@ -30,6 +30,12 @@ namespace IMDBWebAPI.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+        }*/
+
+        [HttpGet(Name = "GetWeatherForecast2")]
+        public string Get(int id)
+        {
+            return "Hello P" + id+ "few";
         }
     }
 }
